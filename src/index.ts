@@ -39,6 +39,7 @@ const resolvers = {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
+        console.log(" From the line 42 result is ---->", result)
 
         // Fetch homeworld details separately
         const homeworldResponse = await fetch(result.homeworld);
@@ -71,7 +72,7 @@ const resolvers = {
         return {
           name: result.name,
           birthYear: result.birth_year,
-          planet: {
+          homeworld: {
             name: homeworld.name,
             climate: homeworld.climate,
             terrain: homeworld.terrain,
@@ -109,7 +110,7 @@ const server = new ApolloServer({
 
 // Start the server
 startStandaloneServer(server, {
-  listen: { port: 4000 },
+  listen: { port: Number(process.env.PORT) || 4000 },
 }).then(({ url }) => {
   console.log(`Server ready at ${url}`);
 });

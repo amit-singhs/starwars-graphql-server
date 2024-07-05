@@ -23,7 +23,7 @@ type Starship {
   type Person {
     name: String
     birthYear: String
-    planet: Planet
+    homeworld: Planet
     films: [Film]
     vehicles: [Vehicle]
     starships: [Starship]
